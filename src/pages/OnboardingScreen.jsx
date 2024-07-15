@@ -1,4 +1,11 @@
-import {View, Text, StyleSheet, Dimensions, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
 import colors from '../themes/Colors';
 
@@ -10,7 +17,17 @@ export default function OnboardingScreen() {
       <View style={styles.ellipseBackground}>
         <View style={styles.inlineContainer}>
           <View style={styles.imageContainer}>
-            <Image />
+            <Image
+              source={require('../assets/images/Task2x.png')}
+              style={styles.image}
+              resizeMode="stretch"
+            />
+          </View>
+          <View style={styles.footerContainer}>
+            <Text style={styles.title}>Haydi İşlerini Planla!</Text>
+            <TouchableOpacity style={styles.buttonContainer}>
+              <Text style={styles.plus}>+</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -32,6 +49,44 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: width / 2,
     transform: [{scaleX: 1.5}],
   },
-  inlineContainer: {},
-  imageContainer: {},
+  inlineContainer: {
+    width: width,
+    height: '100%',
+    position: 'absolute',
+  },
+  imageContainer: {
+    alignItems: 'center',
+    marginTop: 110,
+  },
+  image: {
+    height: 400,
+    width: 400,
+  },
+  footerContainer: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '30%',
+  },
+  title: {
+    color: colors.text.secondary,
+    fontSize: 20,
+    textAlign: 'center',
+  },
+  buttonContainer: {
+    backgroundColor: colors.primary,
+    margin: 20,
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  plus: {
+    color: colors.background.primary,
+    fontSize: 50,
+    alignSelf: 'center',
+  },
 });

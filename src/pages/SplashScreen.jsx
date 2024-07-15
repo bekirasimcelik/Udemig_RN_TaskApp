@@ -30,7 +30,7 @@ export default function SplashScreen() {
         onAnimationFinish={() => {
           setTimeout(() => {
             checkOnboardingComplete();
-          }, 1000);
+          }, 100);
         }}
       />
     </View>
