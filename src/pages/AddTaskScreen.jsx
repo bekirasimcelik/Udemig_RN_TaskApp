@@ -1,10 +1,10 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 
-export default function App() {
+export default function AddTaskScreen() {
   return (
     <View>
-      <Text>App</Text>
+      <Text>AddTaskScreen</Text>
     </View>
   );
 }
