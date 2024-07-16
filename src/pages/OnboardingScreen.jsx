@@ -8,10 +8,20 @@ import {
 } from 'react-native';
 import React from 'react';
 import colors from '../themes/Colors';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorageKey from '../constants/AsyncStorageKey';
+import {useNavigation} from '@react-navigation/native';
 
 const {width, height} = Dimensions.get('window');
 
 export default function OnboardingScreen() {
+  const navigation = useNavigation();
+
+  const handleOnboardingComplete = async () => {
+    await AsyncStorage.setItem(AsyncStorageKey.onboardingComplete, 'true');
+    navigation.replace('AddTask');
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.ellipseBackground}>
@@ -25,7 +35,9 @@ export default function OnboardingScreen() {
           </View>
           <View style={styles.footerContainer}>
             <Text style={styles.title}>Haydi İşlerini Planla!</Text>
-            <TouchableOpacity style={styles.buttonContainer}>
+            <TouchableOpacity
+              onPress={handleOnboardingComplete}
+              style={styles.buttonContainer}>
               <Text style={styles.plus}>+</Text>
             </TouchableOpacity>
           </View>
