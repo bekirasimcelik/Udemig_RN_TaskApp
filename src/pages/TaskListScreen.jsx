@@ -33,6 +33,12 @@ export default function TaskListScreen() {
       title: 'title',
       status: 'closed',
     },
+    {
+      userId: 4,
+      id: 4,
+      title: 'title',
+      status: 'done',
+    },
   ]);
 
   return (
