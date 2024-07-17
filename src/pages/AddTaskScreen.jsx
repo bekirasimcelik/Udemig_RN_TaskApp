@@ -6,6 +6,7 @@ import TaskNameIcon from '../assets/images/SearchIcon.png';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import DropDownPicker from 'react-native-dropdown-picker';
 import colors from '../themes/Colors';
+import CustomButton from '../components/CustomButton';
 
 export default function AddTaskScreen() {
   const [title, setTitle] = useState('');
@@ -81,6 +82,8 @@ export default function AddTaskScreen() {
         </View>
       </View>
 
+      <CustomButton label={'Save Task'} />
+
       <DateTimePickerModal
         onCancel={hideDatePicker}
         isVisible={isDatePickerVisible}
@@ -107,6 +110,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     alignItems: 'center',
+    marginBottom: 50,
   },
   status: {
     fontSize: 15,
