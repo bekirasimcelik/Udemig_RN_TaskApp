@@ -24,6 +24,10 @@ export default function AddTaskScreen() {
           onChangeText={setTitle}
           value={title}
         />
+        <View style={{flexDirection: 'row'}}>
+          <CustomTextInput style={{width: '40%'}} label={'Başlangıç Zamanı'} />
+          <CustomTextInput style={{width: '40%'}} label={'Bitiş Zamanı'} />
+        </View>
       </View>
     </View>
   );
