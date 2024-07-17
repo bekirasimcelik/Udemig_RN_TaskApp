@@ -4,6 +4,7 @@ import colors from '../themes/Colors';
 import StatusButton from './StatusButton';
 import {useNavigation} from '@react-navigation/native';
 import ScreenName from '../constants/ScreenName';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default function TodoItem({data}) {
   const navigation = useNavigation();
@@ -49,7 +50,22 @@ export default function TodoItem({data}) {
         </View>
       </View>
       <Text style={styles.taskDescription}>{data?.description}</Text>
-      <View style={styles.footerContainer}></View>
+      <View style={styles.footerContainer}>
+        <View>
+          <Text>Başlangıç Tarihi</Text>
+          <View style={styles.timeContainer}>
+            <Icon name="clock-outline" size={15} color={colors.primary} />
+            <Text style={styles.timeText}>17.07.2024 00:42</Text>
+          </View>
+        </View>
+        <View>
+          <Text>Bitiş Tarihi</Text>
+          <View style={styles.timeContainer}>
+            <Icon name="clock-outline" size={15} color={colors.primary} />
+            <Text style={styles.timeText}>19.07.2024 00:42</Text>
+          </View>
+        </View>
+      </View>
     </View>
   );
 }
@@ -79,4 +95,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   taskDescription: {},
+  footerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  timeText: {
+    color: colors.primary,
+    fontWeight: '600',
+    marginHorizontal: 5,
+    fontSize: 12,
+  },
+  timeContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });

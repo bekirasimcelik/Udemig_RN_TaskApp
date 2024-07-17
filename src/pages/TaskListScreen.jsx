@@ -11,6 +11,7 @@ import colors from '../themes/Colors';
 import CustomTextInput from '../components/CustomTextInput';
 import SearchIcon from '../assets/images/SearchIcon.png';
 import TodoItem from '../components/TodoItem';
+import CustomButton from '../components/CustomButton';
 
 export default function TaskListScreen() {
   const [searchText, setSearchText] = useState('');
@@ -49,12 +50,17 @@ export default function TaskListScreen() {
             value={searchText}
             onChangeText={setSearchText}
             imageSource={SearchIcon}
+            style={{marginHorizontal: 0}}
+            placeholder="Task Ara"
           />
           <FlatList
+            keyExtractor={item => item?.id.toString()}
+            showsVerticalScrollIndicator={false}
             data={tasks}
             renderItem={({item}) => <TodoItem data={item} />}
           />
         </SafeAreaView>
+        <CustomButton label={'Add Task'} />
       </View>
     </View>
   );

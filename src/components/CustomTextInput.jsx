@@ -13,16 +13,16 @@ export default function CustomTextInput({
   imageSource,
   onChangeText,
   value,
+  style,
   ...rest
 }) {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={[styles.container, style]}>
       <Text>Task</Text>
       <View style={styles.inputContainer}>
         <Image source={imageSource} style={styles.image} />
         <TextInput
           {...rest}
-          placeholder="Task Ara"
           onChangeText={onChangeText}
           value={value}
           style={styles.textInput}
