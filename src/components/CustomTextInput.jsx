@@ -15,19 +15,26 @@ export default function CustomTextInput({
   value,
   style,
   label,
+  onPressIcon,
   ...rest
 }) {
   return (
-    <TouchableOpacity style={[styles.container, style]}>
+    <TouchableOpacity
+      onPress={() => onPressIcon()}
+      style={[styles.container, style]}>
       <Text style={styles.label}>{label}</Text>
       <View style={styles.inputContainer}>
         <Image source={imageSource} style={styles.image} />
-        <TextInput
-          {...rest}
-          onChangeText={onChangeText}
-          value={value}
-          style={styles.textInput}
-        />
+        {!onPressIcon ? (
+          <TextInput
+            {...rest}
+            onChangeText={onChangeText}
+            value={value}
+            style={styles.textInput}
+          />
+        ) : (
+          <Text>{value}</Text>
+        )}
       </View>
     </TouchableOpacity>
   );
