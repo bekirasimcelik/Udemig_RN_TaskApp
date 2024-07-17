@@ -12,8 +12,11 @@ import CustomTextInput from '../components/CustomTextInput';
 import SearchIcon from '../assets/images/SearchIcon.png';
 import TodoItem from '../components/TodoItem';
 import CustomButton from '../components/CustomButton';
+import {useNavigation} from '@react-navigation/native';
+import ScreenName from '../constants/ScreenName';
 
 export default function TaskListScreen() {
+  const navigation = useNavigation();
   const [searchText, setSearchText] = useState('');
   const [tasks, setTasks] = useState([
     {
@@ -60,7 +63,10 @@ export default function TaskListScreen() {
             renderItem={({item}) => <TodoItem data={item} />}
           />
         </SafeAreaView>
-        <CustomButton label={'Add Task'} />
+        <CustomButton
+          label={'Add Task'}
+          onPress={() => navigation.navigate(ScreenName.addTask)}
+        />
       </View>
     </View>
   );
