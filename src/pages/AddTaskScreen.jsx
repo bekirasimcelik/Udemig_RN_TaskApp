@@ -1,8 +1,12 @@
 import {View, Text, StyleSheet} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import LottieView from 'lottie-react-native';
+import CustomTextInput from '../components/CustomTextInput';
+import TaskNameIcon from '../assets/images/SearchIcon.png';
 
 export default function AddTaskScreen() {
+  const [title, setTitle] = useState('');
+
   return (
     <View style={styles.container}>
       <View style={styles.inlineContainer}>
@@ -14,6 +18,12 @@ export default function AddTaskScreen() {
             loop
           />
         </View>
+        <CustomTextInput
+          imageSource={TaskNameIcon}
+          label={'Task Name'}
+          onChangeText={setTitle}
+          value={title}
+        />
       </View>
     </View>
   );

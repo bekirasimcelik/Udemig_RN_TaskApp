@@ -14,11 +14,12 @@ export default function CustomTextInput({
   onChangeText,
   value,
   style,
+  label,
   ...rest
 }) {
   return (
     <TouchableOpacity style={[styles.container, style]}>
-      <Text>Task</Text>
+      <Text style={styles.label}>{label}</Text>
       <View style={styles.inputContainer}>
         <Image source={imageSource} style={styles.image} />
         <TextInput
@@ -53,5 +54,11 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     padding: 15,
     borderRadius: 15,
+  },
+  label: {
+    fontSize: 15,
+    color: colors.text.primary,
+    fontWeight: '600',
+    marginBottom: 5,
   },
 });
