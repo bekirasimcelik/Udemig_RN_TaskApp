@@ -20,6 +20,7 @@ export default function CustomTextInput({
 }) {
   return (
     <TouchableOpacity
+      disabled={onPressIcon ? false : true}
       onPress={() => onPressIcon()}
       style={[styles.container, style]}>
       <Text style={styles.label}>{label}</Text>

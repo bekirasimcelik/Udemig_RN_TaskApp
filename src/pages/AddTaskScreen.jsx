@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     alignItems: 'center',
-    marginBottom: 50,
+    marginBottom: 150,
   },
   status: {
     fontSize: 15,
