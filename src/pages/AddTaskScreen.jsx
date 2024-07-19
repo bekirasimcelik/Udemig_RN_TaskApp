@@ -8,8 +8,11 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import colors from '../themes/Colors';
 import CustomButton from '../components/CustomButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useNavigation} from '@react-navigation/native';
+import ScreenName from '../constants/ScreenName';
 
 export default function AddTaskScreen() {
+  const navigation = useNavigation();
   const {data} = {};
   const [title, setTitle] = useState('');
   const [startDate, setStartDate] = useState('');
@@ -49,6 +52,16 @@ export default function AddTaskScreen() {
     try {
       const existingTasks = await AsyncStorage.getItem('tasks');
       let tasks = existingTasks ? JSON.parse(existingTasks) : [];
+
+      if (data) {
+        tasks = tasks.map(task => (task.id === data.id ? newTask : task));
+      } else {
+        tasks.push(newTask);
+      }
+
+      await AsyncStorage.setItem('tasks', JSON.stringify(tasks));
+
+      navigation.navigate(ScreenName.taskList);
 
       AsyncStorage.setItem('tasks');
     } catch (error) {}
