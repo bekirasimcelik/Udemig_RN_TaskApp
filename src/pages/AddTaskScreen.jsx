@@ -7,10 +7,13 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import DropDownPicker from 'react-native-dropdown-picker';
 import colors from '../themes/Colors';
 import CustomButton from '../components/CustomButton';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function AddTaskScreen() {
+  const {data} = {};
   const [title, setTitle] = useState('');
-
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
@@ -32,6 +35,23 @@ export default function AddTaskScreen() {
 
   const handleConfirm = date => {
     hideDatePicker();
+  };
+
+  const handleAddTask = async () => {
+    const newTask = {
+      id: 1,
+      title: title,
+      startDate,
+      endDate,
+      status: value,
+    };
+
+    try {
+      const existingTasks = await AsyncStorage.getItem('tasks');
+      let tasks = existingTasks ? JSON.parse(existingTasks) : [];
+
+      AsyncStorage.setItem('tasks');
+    } catch (error) {}
   };
 
   return (
@@ -57,12 +77,16 @@ export default function AddTaskScreen() {
             imageSource={TaskNameIcon}
             style={{width: '40%'}}
             label={'Başlangıç Zamanı'}
+            isDate
+            value={setStartDate}
           />
           <CustomTextInput
             onPressIcon={() => showDatePicker()}
             imageSource={TaskNameIcon}
             style={{width: '40%'}}
             label={'Bitiş Zamanı'}
+            isDate
+            value={setEndDate}
           />
         </View>
         <Text style={styles.status}>Status</Text>

@@ -16,6 +16,7 @@ export default function CustomTextInput({
   style,
   label,
   onPressIcon,
+  isDate,
   ...rest
 }) {
   return (
